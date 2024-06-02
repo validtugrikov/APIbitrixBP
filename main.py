@@ -612,6 +612,8 @@ def check_contract(auth, contract_id):
     company = func.b.call('crm.company.get', {'id': company_id})
     try:
         rq = func.get_company_rq_list(company_id)
+	if isinstance(rq,list) and ('NAME' in rq[0]):
+            rq=rq[0]
     except:
         rq = False
 
